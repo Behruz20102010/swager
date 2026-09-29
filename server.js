@@ -1,4 +1,3 @@
-```js
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -8,7 +7,9 @@ const users = JSON.parse(
 );
 
 const send = (res, code, type, body) => {
-  res.writeHead(code, { 'Content-Type': type });
+  res.writeHead(code, {
+    'Content-Type': type
+  });
   res.end(body);
 };
 
@@ -32,12 +33,19 @@ http.createServer((req, res) => {
     const u = users.find(x => x.id === Number(m[1]));
 
     return u
-      ? send(res, 200, 'application/json', JSON.stringify(u))
+      ? send(
+          res,
+          200,
+          'application/json',
+          JSON.stringify(u)
+        )
       : send(
           res,
           404,
           'application/json',
-          JSON.stringify({ error: 'User not found' })
+          JSON.stringify({
+            error: 'User not found'
+          })
         );
   }
 
@@ -47,7 +55,10 @@ http.createServer((req, res) => {
       res,
       200,
       'text/yaml',
-      fs.readFileSync(path.join(__dirname, 'openapi.yaml'))
+      fs.readFileSync(
+        path.join(__dirname, 'openapi.yaml'),
+        'utf8'
+      )
     );
   }
 
@@ -57,13 +68,15 @@ http.createServer((req, res) => {
       res,
       200,
       'text/html',
-      fs.readFileSync(path.join(__dirname, 'index.html'))
+      fs.readFileSync(
+        path.join(__dirname, 'index.html'),
+        'utf8'
+      )
     );
   }
 
   send(res, 404, 'text/plain', 'Not found');
 
-}).listen(process.env.PORT || 3000, () => {
-  console.log('Server ishlayapti');
+}).listen(process.env.PORT || 3000, '0.0.0.0', () => {
+  console.log(`Server ishlayapti: ${process.env.PORT || 3000}`);
 });
-```
