@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "Ali Valiyev", "email": "ali@example.com", "phone": "+998901112233", "city": "Tashkent" },
+  { "id": 2, "name": "Malika Karimova", "email": "malika@example.com", "phone": "+998902223344", "city": "Samarkand" },
+  { "id": 3, "name": "Jasur Rahimov", "email": "jasur@example.com", "phone": "+998903334455", "city": "Bukhara" },
+  { "id": 4, "name": "Dilnoza Ismoilova", "email": "dilnoza@example.com", "phone": "+998904445566", "city": "Namangan" },
+  { "id": 5, "name": "Sardor Toshmatov", "email": "sardor@example.com", "phone": "+998905556677", "city": "Andijan" }
+]

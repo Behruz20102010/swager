@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: Users API
+  version: 1.0.0
+  description: 5 ta user qaytaradigan oddiy API
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/users:
+    get:
+      summary: Barcha userlar (5 ta)
+      tags: [Users]
+      responses:
+        '200':
+          description: Userlar ro'yxati
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /api/users/{id}:
+    get:
+      summary: Bitta userni ID bo'yicha olish
+      tags: [Users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
+      responses:
+        '200':
+          description: User topildi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User topilmadi
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Ali Valiyev
+        email:
+          type: string
+          example: ali@example.com
+        phone:
+          type: string
+          example: "+998901112233"
+        city:
+          type: string
+          example: Tashkent
