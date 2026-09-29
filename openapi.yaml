@@ -4,9 +4,12 @@ info:
   version: 1.0.0
   description: 5 ta user qaytaradigan oddiy API
 servers:
-  - url: http://localhost:3000
+  - url: https://new-1-cztp.onrender.com
+    description: Global API
+  - url: http://localhost:3000/api
+    description: Local API
 paths:
-  /api/users:
+  /users:
     get:
       summary: Barcha userlar (5 ta)
       tags: [Users]
@@ -19,8 +22,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
-  /api/users/{id}:
+  /users/{id}:
     get:
+      servers:
+        - url: http://localhost:3000/api
+          description: Local API
       summary: Bitta userni ID bo'yicha olish
       tags: [Users]
       parameters:
